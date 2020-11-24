@@ -1,0 +1,30 @@
+Session Instantiated ~ 2020-11-08 10:22:00.285775 (CDT).
+Could not remove __pycache__ (did not exist).
+Session Terminated ~ 2020-11-08 10:22:00.323008 (CDT).
+==========
+Session Instantiated ~ 2020-11-08 10:22:45.331400 (CDT).
+Could not remove __pycache__ (did not exist).
+Session Terminated ~ 2020-11-08 10:22:45.371080 (CDT).
+==========
+Session Instantiated ~ 2020-11-08 10:23:20.336959 (CDT).
+Could not remove __pycache__ (did not exist).
+Session Terminated ~ 2020-11-08 10:23:20.370357 (CDT).
+==========
+Session Instantiated ~ 2020-11-08 10:23:38.884643 (CDT).
+Could not remove __pycache__ (did not exist).
+AaravM4#9558 ran Surviv Link Generator Command unsuccessfully. Raised ('Element <a id="btn-create-team" class="btn-darken menu-option btn-team-option"> is not clickable at point (1026,371) because another element <div class="modal-body"> obscures it', None, 'WebDriverError@chrome://marionette/content/error.js:181:5\nElementClickInterceptedError@chrome://marionette/content/error.js:280:5\nwebdriverClickElement@chrome://marionette/content/interaction.js:166:11\ninteraction.clickElement@chrome://marionette/content/interaction.js:125:11\nclickElement@chrome://marionette/content/listener.js:746:22\ndispatch/</req<@chrome://marionette/content/listener.js:107:17\ndispatch/<@chrome://marionette/content/listener.js:102:15\n')
+Session Instantiated ~ 2020-11-19 11:00:10.922566 (Eastern Daylight Time).
+Could not remove __pycache__ (did not exist).
+ItzDrWaffle#9376 ran Surviv Help Command unsuccessfully. Raised Traceback (most recent call last):
+  File "C:\Users\Ari Marlough\Downloads\riptide-bot-old\riptide-bot-old\cogs\surviv\help.py", line 40, in help
+    await ctx.send(embed=embed)
+  File "C:\Users\Ari Marlough\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\LocalCache\local-packages\Python38\site-packages\discord\abc.py", line 904, in send
+    data = await state.http.send_message(channel.id, content, tts=tts, embed=embed,
+  File "C:\Users\Ari Marlough\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\LocalCache\local-packages\Python38\site-packages\discord\http.py", line 241, in request
+    raise Forbidden(r, data)
+discord.errors.Forbidden: 403 Forbidden (error code: 50013): Missing Permissions
+
+Session Instantiated ~ 2020-11-19 11:13:17.409487 (Eastern Daylight Time).
+Could not remove __pycache__ (did not exist).
+Session Instantiated ~ 2020-11-19 11:15:51.095112 (Eastern Daylight Time).
+Could not remove __pycache__ (did not exist).
