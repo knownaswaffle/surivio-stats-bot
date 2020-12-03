@@ -1,16 +1,4 @@
-# Python program to explain os.system() method  
-      
-# importing os module  
-import os  
-  
-# Command to execute 
-# Using Windows OS command 
-cmd = 'pip install discord.py'
-  
-# Using os.system() method 
-os.system(cmd) 
-# run with -B flag to supress byte compiled pycache
-
+#commands run with -B flag to supress byte compiled pycache
 
 import discord
 from discord.ext import commands, tasks
@@ -27,6 +15,16 @@ import shutil
 import aiosqlite
 import sys
 import traceback
+import os 
+
+
+# Command to execute 
+# Using Windows OS command 
+cmd = 'pip install -r requirements.txt'
+
+# Using os.system() method 
+os.system(cmd)
+
 
 with open('config.yaml', 'r') as f:
     config = yaml.load(f, Loader=yaml.FullLoader)
@@ -44,10 +42,10 @@ SHARD_COUNT = config.get('SHARD_COUNT')
 EMBED_COLOR = config.get('DEFAULT_COLOR')
 DEFAULT_PREFIX = config.get('DEFAULT_PREFIX')
 
-dont_load = {'surviv': ['match.py'], 'krunker': ['player.py', 'clan.py']}
+dont_load = {'surviv': ['match.py']}
 
 
-class RiptideBot(commands.AutoShardedBot):
+class StatsBot(commands.AutoShardedBot):
     def __init__(self, **params):
         """ Initialize Bot with params   """
         super().__init__(DEFAULT_PREFIX, **params)
@@ -56,6 +54,7 @@ class RiptideBot(commands.AutoShardedBot):
          # initialize session once
         self.dont_load = dont_load
         self._session = aiohttp.ClientSession()
+        self.prefix = "s!"
 
     def startup(self):
         """" Startup bot and load all cogs """
@@ -82,6 +81,16 @@ class RiptideBot(commands.AutoShardedBot):
                 else:
                     AssessLogger.log(f'Not loading {cog} cog from {game} folder.')
         print('All Cogs Loaded.')
+        
+
+bot = StatsBot(shard_count = SHARD_COUNT) # instantiate bot
+         
+@bot.event
+async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"s!help on {len(bot.guilds)} servers!"))
+print("Bot is ready")
+
+
 
 
 # Scrape the some website stats for storing
@@ -89,7 +98,7 @@ class RiptideBot(commands.AutoShardedBot):
 # it'll be faster to return results
 # I'll probably want to fix this to allow for merging conflicts
 @tasks.loop(hours=12)
-async def scrape_via_bs4(bot: RiptideBot):
+async def scrape_via_bs4(bot: StatsBot):
     await bot.wait_until_ready()
     # Start Surviv Scrape
     try:
@@ -229,9 +238,8 @@ async def scrape_via_bs4(bot: RiptideBot):
                 await surviv_conn.commit()
 
         # Do Fortnite Scraping
-        
-
-
+    
+    
         AssessLogger.log('Finished Routine Scrape.')
         # close connection
         await surviv_conn.close()
@@ -239,19 +247,20 @@ async def scrape_via_bs4(bot: RiptideBot):
         ErrorLogger.log(f'Failed get new data. Raised {traceback.format_exc()}')
         AssessLogger.log(f'Failed get new data.')
         wrapup_all()
+        
+
 
 
 
 if __name__ == "__main__":
     time_init, tzname = get_current_time()
     for logger in (AssessLogger, WarningLogger, ErrorLogger, StreamLogger):
-        logger.log(f'Session Instantiated ~ {time_init} ({tzname}).')
-    riptide = RiptideBot(shard_count = SHARD_COUNT) # instantiate bot
-    riptide.startup() # startup bot
-    scrape_via_bs4.start(riptide)
+        logger.log(f'Session Instantiated ~ {time_init} ({tzname}).')   
+    bot.startup() # startup bot 
+    scrape_via_bs4.start(bot)
     try:
         AssessLogger.log(f'Using Token: {BOT_TOKEN}.')
-        riptide.run(BOT_TOKEN)
+        bot.run(BOT_TOKEN)
     except discord.errors.LoginFailure: # improper token passed
         # log as an error
         time_error, tzname = get_current_time()
@@ -296,4 +305,3 @@ if __name__ == "__main__":
 #| ADD A GAMER STREAM COMMAND TO LET SHOW WHEN GAMER IS STREAMING
 #| ADD A GAMER STREAM COMMAND TO 
 #| STREAM A MOVIE
-
