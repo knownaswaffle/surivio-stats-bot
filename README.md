@@ -5,7 +5,7 @@
   <img src="https://top.gg/api/widget/655541871006842891.svg" alt="Surviv Stat Bot" />
 </a>
 
-The **Surviv io Stat Bot** is an easy to use discord bot written in `discord.py` and was created by **AaravM4#9558** and **ItzDrWaffle#9376**.
+The **Surviv io Stat Bot** is an easy to use discord bot written in `discord.py` and was created by **AaravM4#9558** and **Optix Waffleツ#9376**.
 
 > [INVITE URL](https://discordapp.com/api/oauth2/authorize?client_id=655541871006842891&permissions=0&scope=bot)
 
@@ -38,4 +38,4 @@ This bot removes the work of having to go and check stats or updates from surviv
 
 **OFFICIAL SERVER**: 
 
-https://discord.gg/rYJbBYHmce
+[Link](https://discord.gg/rYJbBYHmce)
