@@ -8,7 +8,6 @@ from utils.session_handlers import wrapup_all, get_current_time
 
 import requests
 from bs4 import BeautifulSoup as soupify
-import yaml
 import os
 import aiohttp
 import shutil
@@ -16,6 +15,7 @@ import aiosqlite
 import sys
 import traceback
 import os 
+import yaml
 
 
 # Command to execute 
@@ -87,7 +87,7 @@ bot = StatsBot(shard_count = SHARD_COUNT) # instantiate bot
          
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"s!help on {len(bot.guilds)} servers!"))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"s.help on {len(bot.guilds)} servers!"))
 print("Bot is ready")
 
 
